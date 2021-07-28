@@ -20,9 +20,12 @@ class App {
     this.dbConnect();
 
   }
+  
   setMiddleware(){
+
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: false }));
+
   }
   
   setRouting(){

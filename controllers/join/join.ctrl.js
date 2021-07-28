@@ -3,6 +3,7 @@ exports.get_join_main = ( req, res ) =>{
 }
 
 exports.post_join_main = ( req, res ) =>{
+  console.log(req.body);
   res.redirect('/join/success');
 }
 
