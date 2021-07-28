@@ -1,5 +1,6 @@
 const express = require('express');
 const nunjucks = require('nunjucks');
+const db = require('./models');
 
 class App {
   constructor(){
@@ -11,6 +12,9 @@ class App {
 
     //nunjucks
     this.setNunjucks();
+
+    //sequelize
+    this.dbConnect();
 
   }
 
@@ -26,7 +30,20 @@ class App {
       express: this.app
     });
   }
-  
+
+  dbConnect(){
+    db.sequelize.authenticate()
+    .then(() => {
+      console.log('Connection has been established successfully.');
+      return db.sequelize.sync({force : false});
+    })
+    .then(() => {
+      console.log('DB Sync complete.');
+    })
+    .catch(err => {
+      console.error('Unable to connect to the database:', err);
+    });
+  }
 }
 
 module.exports = new App().app;
