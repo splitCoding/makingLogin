@@ -1,12 +1,15 @@
 const express = require('express');
 const nunjucks = require('nunjucks');
 const db = require('./models');
+const bodyParser = require('body-parser');
 
 class App {
   constructor(){
 
     this.app = express();
 
+    //미들웨어
+    this.setMiddleware();
     //라우팅
     this.setRouting();
 
@@ -17,7 +20,11 @@ class App {
     this.dbConnect();
 
   }
-
+  setMiddleware(){
+    this.app.use(bodyParser.json());
+    this.app.use(bodyParser.urlencoded({ extended: false }));
+  }
+  
   setRouting(){
     
     this.app.use(require('./controllers'));
