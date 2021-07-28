@@ -1,0 +1,24 @@
+{% set title = "회원가입" %}
+{% extends '../layout/base.html'%}
+
+{% block content%}
+  <form action="" method="post">
+    <label>
+      아이디
+      <input id="username" type="text" name="username" required>
+    </label>
+    <label>
+      이름
+      <input id="username" type="text" name="username" required>
+    </label>
+    <label>
+      패스워드
+      <input type="password" name="password" required>
+    </label>
+    <label>
+      패스워드 확인
+      <input type="password" name="password" required>
+    </label>
+    <button> 회원가입 </button>
+  </form>
+{% endblock %}

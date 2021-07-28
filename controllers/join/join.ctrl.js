@@ -1,9 +1,9 @@
 exports.get_join_main = ( req, res ) =>{
-  res.send('join/mainpage');
+  res.render('join/join.html');
 }
 
 exports.post_join_main = ( req, res ) =>{
-  res.redirect('/login/sucess');
+  res.redirect('/join/success');
 }
 
 exports.get_join_success = ( req, res ) =>{

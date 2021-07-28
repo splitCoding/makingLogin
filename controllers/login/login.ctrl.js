@@ -1,5 +1,5 @@
 exports.get_login_main = ( req, res ) =>{
-  res.render('main.html');
+  res.render('login/login.html');
 }
 
 exports.post_login_main = ( req, res ) =>{
