@@ -1,9 +1,9 @@
 exports.get_login_main = ( req, res ) =>{
-  res.send('login/mainpage');
+  res.render('main.html');
 }
 
 exports.post_login_main = ( req, res ) =>{
-  res.redirect('/login/sucess');
+  res.redirect('/login/success');
 }
 
 exports.get_login_success = ( req, res ) =>{

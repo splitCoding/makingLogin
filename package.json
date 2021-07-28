@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server",
+    "start": "nodemon -e js,html server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
