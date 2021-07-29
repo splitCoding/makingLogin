@@ -4,6 +4,8 @@ const db = require('./models');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const passport = require('passport');
+
 
 class App {
   constructor(){
@@ -56,8 +58,12 @@ class App {
         maxAge : 2000 * 60 * 60 //지속시간
       }
     }));
+
+    this.app.use(passport.initialize());
+    this.app.use(passport.session());
+    
   }
-  
+
   dbConnect(){
     db.sequelize.authenticate()
     .then(() => {
