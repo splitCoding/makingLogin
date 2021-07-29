@@ -5,6 +5,7 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
+const flash = require('connect-flash');
 
 
 class App {
@@ -17,7 +18,7 @@ class App {
 
     //세션
     this.setSession();
-    
+
     //라우팅
     this.setRouting();
 
@@ -63,7 +64,8 @@ class App {
 
     this.app.use(passport.initialize());
     this.app.use(passport.session());
-
+  
+    this.app.use(flash());
   }
 
   dbConnect(){

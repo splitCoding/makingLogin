@@ -6,7 +6,8 @@ const passport = require('../../middleware/passport-local');
 router.get('/', ctrl.get_login_main);
 
 router.post('/', passport.authenticate('local',{
-  failureRedirect : '/login/fail'
+  failureRedirect : '/login',
+  failureFlash : true
 })
 , ctrl.post_login_main);
 

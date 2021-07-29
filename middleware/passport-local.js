@@ -16,7 +16,7 @@ passport.use(new LocalStrategy({
     attributes : {exclude : ['password']}
   })
   if(!user){
-    return done(null, false, )
+    return done(null, false, { message : '로그인에 실패하였습니다'})
   } else {
     return done(null, user.dataValues) //user.dataValues가 serializeUser의 user파라미터에 전달
   }
