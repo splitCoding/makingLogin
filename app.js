@@ -15,14 +15,15 @@ class App {
     //미들웨어
     this.setMiddleware();
 
+    //세션
+    this.setSession();
+    
     //라우팅
     this.setRouting();
 
     //nunjucks
     this.setNunjucks();
 
-    //세션
-    this.setSession();
 
     //sequelize
     this.dbConnect();
@@ -50,6 +51,7 @@ class App {
   }
 
   setSession(){
+
     this.app.use(session({
       secret : 'makinglogin', //암호화에 쓰일 문구
       resave : false, // 세션 항상 저장할지 여부
@@ -61,7 +63,7 @@ class App {
 
     this.app.use(passport.initialize());
     this.app.use(passport.session());
-    
+
   }
 
   dbConnect(){

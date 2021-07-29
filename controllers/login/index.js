@@ -13,11 +13,12 @@ passport.use(new LocalStrategy({
 }, async (req, userid, password, done)=>{
   const user = await models.User.findOne({
     where : {
-      userid, password : passwordHash(password)
+      userid : req.body.userid, 
+      password : passwordHash(password)
     }
   })
   if(!user){
-    return done(null, false)
+    return done(null, false, )
   } else {
     return done(null, user.dataValues) //user.dataValues가 serializeUser의 user파라미터에 전달
   }
@@ -36,7 +37,10 @@ passport.deserializeUser((user, done)=>{
 
 router.get('/', ctrl.get_login_main);
 
-router.post('/', ctrl.post_login_main);
+router.post('/', passport.authenticate('local',{
+  failureRedirect : '/login/fail'
+})
+, ctrl.post_login_main);
 
 router.get('/success', ctrl.get_login_success);
 
