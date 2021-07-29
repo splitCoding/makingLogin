@@ -12,7 +12,8 @@ passport.use(new LocalStrategy({
     where : {
       userid : req.body.userid, 
       password : passwordHash(password)
-    }
+    },
+    attributes : {exclude : ['password']}
   })
   if(!user){
     return done(null, false, )
