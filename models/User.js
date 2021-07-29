@@ -1,3 +1,5 @@
+const passwordHash = require('../helpers/passwordHash');
+
 module.exports = (sequelize, Sequelize) => {
   const User = sequelize.define('User', {
     id : { type : Sequelize.INTEGER, primaryKey : true, autoIncrement : true },
@@ -7,5 +9,10 @@ module.exports = (sequelize, Sequelize) => {
   },{
     tableName : 'User'
   })
+
+  User.beforeCreate((user,_)=>{
+    user.password = passwordHash(user.password);
+  })
+
   return User
 }
