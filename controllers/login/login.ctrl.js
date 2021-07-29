@@ -13,7 +13,7 @@ exports.get_login_success = ( req, res ) =>{
 }
 
 exports.get_logout = (req, res)=>{
-  res.logout();
+  req.logout();
   res.redirect('/login');
 }
 
