@@ -13,12 +13,24 @@
     </label>
     <label>
       패스워드
-      <input type="password" name="password" required>
+      <input class="password1" type="password" name="password" required>
     </label>
     <label>
       패스워드 확인
-      <input type="password" name="password2" required>
+      <input class="password2" type="password" name="password2" required>
     </label>
     <button> 회원가입 </button>
   </form>
+  <script>
+    let password1 = document.querySelector('.password1');
+    let password2 = document.querySelector('.password2');
+    let btn = document.querySelector('button');
+
+    document.addEventListener('submit',(e)=>{
+      if(password1.value !== password2.value){
+        e.preventDefault();
+        alert('패스워드가 다릅니다');
+      }
+    })
+  </script>
 {% endblock %}
