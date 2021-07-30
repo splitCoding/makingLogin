@@ -40,6 +40,9 @@ class App {
   
   setRouting(){
     
+    this.app.get('/',(_,res)=>{
+      res.redirect('/login');
+    })
     this.app.use(require('./controllers'));
   
   }
