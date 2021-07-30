@@ -14,7 +14,7 @@ passport.use(
     {
       clientID: appKey,
       clientSecret: appSecret,
-      callbackURL: 'http://localhost:3000/oauth',
+      callbackURL: callback
     },
     async function (accessToken, refreshToken, params, profile, done) {
       // authorization 에 성공했을때의 액션
