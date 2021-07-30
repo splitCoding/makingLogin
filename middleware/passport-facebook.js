@@ -24,7 +24,8 @@ async ( accessToken, refreshToken, profile, done ) => {
       user = await models.User.create({
         userid : userid,
         username : profile.displayName,
-        password : 'facebook'
+        password : 'facebook',
+        loginType : 'facebook'
       })
     } else {
       user = await models.User.findOne({

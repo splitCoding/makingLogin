@@ -1,11 +1,22 @@
 const passwordHash = require('../helpers/passwordHash');
 
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    id : { type : Sequelize.INTEGER, primaryKey : true, autoIncrement : true },
-    userid : { type : Sequelize.STRING },
-    username : { type : Sequelize.STRING },
-    password : { type : Sequelize.STRING }
+    id : { type : DataTypes.INTEGER, primaryKey : true, autoIncrement : true },
+    userid : { 
+      type : DataTypes.STRING,
+      allowNull : false
+    },
+    username : { 
+      type : DataTypes.STRING,
+      allowNull : false 
+    },
+    password : {
+      type : DataTypes.STRING
+    },
+    loginType : {
+      type : DataTypes.STRING
+    }
   },{
     tableName : 'User'
   })

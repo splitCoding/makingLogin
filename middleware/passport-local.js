@@ -18,7 +18,11 @@ passport.use(new LocalStrategy({
   if(!user){
     return done(null, false, { message : '로그인에 실패하였습니다'})
   } else {
-    return done(null, user.dataValues) //user.dataValues가 serializeUser의 user파라미터에 전달
+    if(user.loginType === 'facebook'){
+      return done(null, false, { message : '페이스북 로그인으로 로그인해주세요'})
+    } else {
+      return done(null, user.dataValues) //user.dataValues가 serializeUser의 user파라미터에 전달
+    }
   }
 }
 ));
