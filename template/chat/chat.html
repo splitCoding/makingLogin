@@ -2,8 +2,21 @@
 {% extends '../layout/base.html'%}
 
 {% block content%}
-  {% if flashMessage %}
-    <div>{{ flashMessage }}</div>
-  {% endif %}
-  <div>{{ message }}</div>
+  <div>
+    <div>대화내용</div>
+    <div>
+        <ul></ul>
+    </div>
+  </div>
+
+  <form action="" method="post">
+    <div>
+        <input type="hidden" name="socketId">
+        <input type="text" name="message" placeholder="대화내용을 입력해주세요.">
+        <span>
+            <button>작성하기</button>
+        </span>
+    </div>
+
+</form>  
 {% endblock %}
