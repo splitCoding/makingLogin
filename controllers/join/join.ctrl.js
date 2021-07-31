@@ -6,11 +6,8 @@ exports.get_join_main = ( req, res ) =>{
 
 exports.post_join_main = ( req, res ) =>{
   try{
-    models.User.create({
-      userid : req.body.userid,
-      username : req.body.username,
-      password : req.body.password
-    }).then(()=>{
+      req.body.thumbnail = (req.file)? req.file.filename : "";
+      models.User.create(req.body).then(()=>{ //create의 콜럼들의 이름과 req.body 요소들의 값이 같을 경우 req.body라고 써도됨
       res.redirect('/join/success');
     })
   } catch(e){

@@ -9,7 +9,7 @@ exports.post_login_main = ( req, res ) =>{
 }
 
 exports.get_login_success = ( req, res ) =>{
-  res.send(req.user); //passport로 로그인 성공시 어디서든 req.user로 정보를 볼 수 있음
+  res.render('login/success.html',{ user : req.user })
 }
 
 exports.get_logout = (req, res)=>{
