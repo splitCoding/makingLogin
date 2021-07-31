@@ -16,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     loginType : {
       type : DataTypes.STRING
+    },
+    thumbnail : {
+      type : DataTypes.STRING
     }
   },{
     tableName : 'User'

@@ -2,10 +2,14 @@
 {% extends '../layout/base.html'%}
 
 {% block content%}
-  <form action="" method="post">
+  <form action="" method="post" enctype="multipart/form-data">
     <label>
       아이디
       <input type="text" name="userid" required>
+    </label>
+    <label>
+      썸네일
+      <input type="file" name="thumbnail" required>
     </label>
     <label>
       이름
