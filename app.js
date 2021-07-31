@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
+const cookieParser = require('cookie-parser');
 
 
 class App {
@@ -32,9 +33,11 @@ class App {
   }
   
   setMiddleware(){
+    
     this.app.use(logger('dev'));
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: false }));
+    this.app.use(cookieParser());
 
   }
   

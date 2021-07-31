@@ -1,0 +1,9 @@
+{% set title = "채팅" %}
+{% extends '../layout/base.html'%}
+
+{% block content%}
+  {% if flashMessage %}
+    <div>{{ flashMessage }}</div>
+  {% endif %}
+  <div>{{ message }}</div>
+{% endblock %}
