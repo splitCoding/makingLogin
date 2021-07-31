@@ -5,12 +5,16 @@
   <div>
     <div>대화내용</div>
     <div>
-        <ul>
+        <ul class="chat">
           
         </ul>
     </div>
   </div>
+  <div style="float: right;">
+    <ul class="userList">
 
+    </ul>
+  </div>
   <form action="" method="post">
     <div>
         <input type="hidden" name="socketId">
@@ -34,7 +38,25 @@
     socket.on('server message', (data)=>{
       let li = document.createElement('li');
       li.innerHTML = `<strong>${data.username}</strong> : ${data.message}`;
-      document.querySelector('ul').append(li);
+      document.querySelector('.chat').append(li);
+    })
+
+    function updateUserList(userList){
+      document.querySelector('.userList').innerHTML = "";
+
+      userList.forEach((user)=>{
+        let li = document.createElement('li');
+        li.innerHTML = user;
+        document.querySelector('.userList').append(li);
+      })
+    }
+
+    socket.on('join', (data)=>{
+      updateUserList(data);
+    })
+    
+    socket.on('leave', (data)=>{
+      updateUserList(data);
     })
     
   </script>
