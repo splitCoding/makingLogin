@@ -20,6 +20,9 @@ class App {
     //세션
     this.setSession();
 
+    //정적파일
+    this.setStatic();
+
     //라우팅
     this.setRouting();
 
@@ -39,6 +42,10 @@ class App {
     this.app.use(bodyParser.urlencoded({ extended: false }));
     this.app.use(cookieParser());
 
+  }
+
+  setStatic(){
+    this.app.use('/uploads',express.static('uploads'));
   }
   
   setRouting(){
