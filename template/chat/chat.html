@@ -5,7 +5,9 @@
   <div>
     <div>대화내용</div>
     <div>
-        <ul></ul>
+        <ul>
+          
+        </ul>
     </div>
   </div>
 
@@ -17,6 +19,23 @@
             <button>작성하기</button>
         </span>
     </div>
+  </form>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    let socket = io();
 
-</form>  
+    document.querySelector('form').addEventListener('submit',(e)=>{
+      e.preventDefault();
+      let message = document.querySelector('input[name="message"]');
+      socket.emit('user message',{ message : message.value });
+      message.value = "";
+    })
+
+    socket.on('server message', (data)=>{
+      let li = document.createElement('li');
+      li.innerText = data;
+      document.querySelector('ul').append(li);
+    })
+    
+  </script>
 {% endblock %}
