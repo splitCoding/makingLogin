@@ -33,7 +33,7 @@
 
     socket.on('server message', (data)=>{
       let li = document.createElement('li');
-      li.innerText = data;
+      li.innerHTML = `<strong>${data.username}</strong> : ${data.message}`;
       document.querySelector('ul').append(li);
     })
     

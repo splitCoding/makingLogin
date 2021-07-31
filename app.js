@@ -66,15 +66,21 @@ class App {
 
   setSession(){
 
-    this.app.use(session({
+    const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+    this.app.sessionMiddleWare = session({
       secret : 'makinglogin', //암호화에 쓰일 문구
       resave : false, // 세션 항상 저장할지 여부
       saveUninitialized : true, //세션을 초기화하지 않고 저장할지 여부
       cookie : {
         maxAge : 2000 * 60 * 60 //지속시간
-      }
-    }));
+      },
+      store : new SequelizeStore({
+        db : db.sequelize,
+      }),
+    });
 
+    this.app.use(this.app.sessionMiddleWare);
     this.app.use(passport.initialize());
     this.app.use(passport.session());
   
