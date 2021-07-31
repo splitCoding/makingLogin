@@ -37,7 +37,7 @@
 
     socket.on('server message', (data)=>{
       let li = document.createElement('li');
-      li.innerHTML = `<strong>${data.username}</strong> : ${data.message}`;
+      li.innerHTML = `<strong>${data.userid}${data.username}</strong> : ${data.message}`;
       document.querySelector('.chat').append(li);
     })
 
@@ -54,7 +54,7 @@
     socket.on('join', (data)=>{
       updateUserList(data);
     })
-    
+
     socket.on('leave', (data)=>{
       updateUserList(data);
     })

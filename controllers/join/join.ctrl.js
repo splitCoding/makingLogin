@@ -17,7 +17,7 @@ exports.post_join_main = ( req, res ) =>{
 }
 
 exports.get_join_success = ( req, res ) =>{
-  res.send('join success');
+  res.send('<script>alert("join success"); location.href = "/login"</script>');
 }
 
 exports.get_join_fail = ( req, res ) =>{
