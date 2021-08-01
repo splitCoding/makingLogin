@@ -23,6 +23,15 @@ module.exports = (sequelize, DataTypes) => {
   },{
     tableName : 'User'
   })
+  
+  User.associate = (models)=>{
+    User.hasMany(models.body,{
+      as : 'Body',
+      foreignKey : 'user_id',
+      sourceKey : 'id',
+      onDelete : 'CASCADE'
+    });
+  }
 
   User.beforeCreate((user,_)=>{
     user.password = passwordHash(user.password);

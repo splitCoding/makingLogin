@@ -1,0 +1,17 @@
+{% set title = "키/몸무게" %}
+{% extends '../layout/base.html'%}
+
+{% block content%}
+  <form action="" method="post">
+    <label>
+      키(cm)
+      <input type="number" name="height" required>
+    </label>
+    <label>
+      무게(kg)
+      <input type="number" name="weight" required>
+    </label>
+    <input type="hidden" name="bmi" value="">
+    <button> 등록 </button>
+  </form>
+{% endblock %}
