@@ -1,7 +1,16 @@
 const models = require('../../models')
 
-exports.get_body = (req, res)=>{
-  res.render('body/index.html');
+exports.get_body = async (req, res)=>{
+  const user = await models.User.findOne({
+    where : {
+      id : req.params.id
+    },
+    include : [
+      'Body'
+    ]
+  });
+
+  res.render('body/index.html',{ user });
 }
 
 exports.post_body = async (req, res)=>{
@@ -15,5 +24,15 @@ exports.post_body = async (req, res)=>{
     bmi : (top/bottom).toFixed(2),
     userid : req.body.userid
   })
-  res.redirect('/login/success');
+  res.redirect(`/body/${req.params.id}`)
+}
+
+exports.get_record_delete = async (req, res)=>{
+  await models.body.destroy({
+    where : {
+      user_id : req.params.user_id,
+      id : req.params.record_id
+    }
+  });
+  res.redirect('/body/'+req.params.user_id);
 }

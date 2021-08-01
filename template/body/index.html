@@ -2,6 +2,9 @@
 {% extends '../layout/base.html'%}
 
 {% block content%}
+  <div>
+    <a href="/login/success">메인으로</a>
+  </div>
   <form action="" method="post">
     <label>
       키(cm)
@@ -14,4 +17,15 @@
     <input type="hidden" name="bmi" value="">
     <button> 등록 </button>
   </form>
+  <ul>
+    {% for record in user.Body %}
+      <li style ="background-color : rgb(255, 230, 230)"> 
+        키 : {{ record.height }} |
+        몸무게 : {{record.weight}}  | BMI : {{record.bmi}} 
+        <a href="/body/delete/{{user.id}}/{{record.id}}">삭제</a><br>
+        작성일 : {{record.createdAt}} 
+      </li>
+      <br>
+    {% endfor %}
+  </ul>
 {% endblock %}
