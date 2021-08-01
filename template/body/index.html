@@ -23,7 +23,7 @@
         키 : {{ record.height }} |
         몸무게 : {{record.weight}}  | BMI : {{record.bmi}} 
         <a href="/body/delete/{{user.id}}/{{record.id}}">삭제</a><br>
-        작성일 : {{ user.dateFormat(record.createdAt) }} 
+        작성일 : {{ user.dateFormat(record.createdAt) }}분
       </li>
       <br>
     {% endfor %}

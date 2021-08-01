@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
   })
 
   User.prototype.dateFormat = (date) =>{
-    return moment(date).format('YYYY-MM-DD');
+    return moment(date).format('YYYY년MM월DD일 | hh시mm');
   }
   return User 
 }
