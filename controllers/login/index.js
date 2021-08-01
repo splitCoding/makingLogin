@@ -11,10 +11,6 @@ router.post('/', passport.authenticate('local',{
 })
 , ctrl.post_login_main);
 
-router.get('/success', ctrl.get_login_success);
-
 router.get('/fail', ctrl.get_login_fail);
-
-router.get('/logout', ctrl.get_logout);
 
 module.exports = router;

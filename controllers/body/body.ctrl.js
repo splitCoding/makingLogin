@@ -1,16 +1,19 @@
 const models = require('../../models')
 
 exports.get_body = async (req, res)=>{
-  const user = await models.User.findOne({
-    where : {
-      id : req.params.id
-    },
-    include : [
-      'Body'
-    ]
-  });
-
-  res.render('body/index.html',{ user });
+  if(req.isAuthenticated()){
+    const user = await models.User.findOne({
+      where : {
+        id : req.params.id
+      },
+      include : [
+        'Body'
+      ]
+    });
+    res.render('body/index.html',{ user });
+  } else { 
+    res.send('<script>alert("로그인 후 사용가능합니다"); location.href = "/"</script>');
+  }
 }
 
 exports.post_body = async (req, res)=>{

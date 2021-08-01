@@ -18,8 +18,7 @@ passport.use(
     },
     async function (accessToken, refreshToken, params, profile, done) {
       // authorization 에 성공했을때의 액션
-      console.log(`accessToken : ${accessToken}`)
-      console.log(`사용자 profile: ${JSON.stringify(profile._json)}`)
+      console.log(profile);
       save(accessToken, refreshToken, profile);
       const userid = `ka_${profile.id}`;
       const exist = await models.User.count({

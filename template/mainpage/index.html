@@ -4,9 +4,11 @@
 {% block content%}
   <div>
     <img style ="width : 70px; height : 70px; background-size: cover;"src="/uploads/{{ user.thumbnail }}" alt="">
-    {{ user.userid }}님 반갑습니다
+    {{ user.username }}님 반갑습니다
   </div>
   <a href="/chat">채팅 기능</a>
   <br>
   <a href="/body/{{ user.id }}">키,몸무게 기록</a>
+  <br>
+  <a href="/logout">로그아웃</a>
 {% endblock %}
